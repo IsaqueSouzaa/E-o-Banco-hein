@@ -1,0 +1,211 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+
+	<script>
+		var saldo = 100.5; 
+		var armazena_nome = ""
+		function login() {
+			var nome = prompt("Olá, qual é o seu nome?");
+			alert("Olá " + nome + ", é um prazer ter você por aqui!")
+			armazena_nome = nome}
+
+
+		function inicio() {
+
+			
+			var escolha = parseInt(prompt('Selecione uma opção 1.) Saldo 2.) Extrato 3.) Saque 4.)Depósito 5.)Transferência 6.) Sair'));
+
+
+
+			switch (escolha) {
+
+				case 1:
+					ver_saldo();
+					break;
+				case 2:
+					ver_extrato();
+					break;
+				case 3:
+					fazer_saque();
+					break;
+				
+				case 4:
+					;fazer_deposito();
+					break;
+				case 5:
+					fazer_transferencia()
+					break;
+				case 6:
+					sair();
+					break;
+				
+				default:
+					erro();
+					break;
+			}
+		}
+		function ver_saldo() {
+			var senha= parseInt(prompt('Informe a senha de acesso'));
+			
+			if(senha!=3589){
+				alert("Senha incorreta!Tente novamente!")
+			 ver_saldo()
+			}
+
+			else {
+
+			alert('Seu saldo atual é: ' + saldo);
+			inicio();
+		}
+	}
+		function ver_extrato() {
+			senha= parseInt(prompt('Informe a senha de acesso'));
+			
+			if(senha!=3589){
+				alert("Senha incorreta!Tente novamente!")
+			 ver_saldo()
+			}
+
+			else {
+			
+			
+			alert("20/03/2024	Crédito Salário 3,500.00\n" +
+				"18/03/2024	Pagamento Fatura Cartão Visa -700.00\n" +
+				"15/03/2024	Transferência Recebida 2,000.00\n" +
+				"10/03/2024	Débito - Supermercado -300.00\n" +
+				"05/03/2024	Crédito Recebido 700.00\n" +
+				"03/03/2024	Débito - Restaurante -100.00\n" +
+				"Saldo:" + saldo)
+
+			inicio()
+		}
+	}
+		
+	function fazer_saque() {
+		var senha= parseInt(prompt('Informe a senha de acesso'));
+			
+			if(senha!=3589){
+				alert("Senha incorreta!Tente novamente!")
+			 ver_saldo()
+			} 
+			
+			else{
+		
+		var saque = parseFloat(prompt('Qual o valor para saque?'));
+			if (isNaN(saque) || saque === '') {
+				alert('Por favor, informe um número:');
+				fazer_saque();
+			}
+			else if (saque > saldo) {
+				alert("Operação não autorizada");
+				fazer_saque();
+			}
+			else if (saque < 1) {
+				alert("Operação não autorizada");
+				fazer_saque();
+			}
+			else {
+				saldo -= saque;
+
+				ver_saldo();
+			}
+		}
+	}
+	
+	
+	function fazer_deposito() {
+			var senha= parseInt(prompt('Informe a senha de acesso'));
+			
+			if(senha!=3589){
+				alert("Senha incorreta!Tente novamente!")
+			 fazer_deposito()
+			} 
+			else{
+			var deposito = parseFloat(prompt('Qual o valor para depósito?'));
+
+		   if (isNaN(deposito) || deposito === '') {
+				alert('Por favor, informe um número:');
+				fazer_deposito();
+			}
+			
+			else if (deposito < 1) {
+				alert("Operação não autorizada");
+				fazer_deposito();
+
+			}
+			else {
+				saldo += deposito;
+				ver_saldo();
+			}
+		}
+		
+	}
+		
+
+	function fazer_transferencia(){
+		var senha= parseInt(prompt('Informe a senha de acesso'));
+			
+			if(senha!=3589){
+				alert("Senha incorreta!Tente novamente!")
+			 ver_saldo()
+			}
+			else{
+			var conta =parseFloat(prompt("Qual o numero da conta que deseja transferi?"));
+			if (isNaN(conta) ||conta==""){
+			alert("Por favor,informe um número:");
+		}
+			
+			var transferencia = parseFloat(prompt("Qual o valor que será transferido?"));
+			
+			
+			if(isNaN(transferencia) || transferencia==""){
+				alert("Por favor,informe um número:");
+				fazer_transferencia();
+			}
+			else if (transferencia > saldo ) {
+				alert("Operação não autorizada");
+				fazer_transferencia();
+			}
+			else if (transferencia < 1) {
+				alert("Operação não autorizada");
+				fazer_transferencia();
+			}
+			else {
+				saldo -= transferencia;
+
+				ver_saldo();
+			}
+		}
+	}
+		function erro() {
+			alert('Por favor, informe um número entre 1 e 6');
+			inicio();
+		}
+
+		function sair() {
+			var confirma = confirm('Você deseja sair?');
+			if (confirma) {
+				alert( armazena_nome + ", foi um prazer ter você por aqui!");
+				window.close
+
+			} else {
+				inicio();
+			}
+		}
+		 
+
+
+		login()
+		inicio();
+	</script>
+
+
+	<title></title>
+</head>
+
+<body>
+
+</body>
+
+</html>
